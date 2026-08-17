@@ -4,8 +4,11 @@ DESCRIPTION = 'What is the result of the expression?'
 
 OPERATIONS = ('+', '-', '*')
 
+MIN_NUMBER = 1
+MAX_NUMBER = 100
 
-def calculate(first, second, operation):
+
+def apply_operation(first, second, operation):
     match operation:
         case '+':
             return first + second
@@ -16,9 +19,9 @@ def calculate(first, second, operation):
 
 
 def generate_round():
-    first = random.randint(1, 100)
-    second = random.randint(1, 100)
+    first = random.randint(MIN_NUMBER, MAX_NUMBER)
+    second = random.randint(MIN_NUMBER, MAX_NUMBER)
     operation = random.choice(OPERATIONS)
     question = f'{first} {operation} {second}'
-    answer = str(calculate(first, second, operation))
+    answer = str(apply_operation(first, second, operation))
     return question, answer
